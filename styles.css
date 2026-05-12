@@ -103,7 +103,7 @@ body {
 }
 
 .eyebrow {
-  font-size: 0.72rem;
+  font-size: 2rem;
   font-weight: 400;
   letter-spacing: 0.35em;
   text-transform: uppercase;
@@ -121,7 +121,7 @@ h1 {
 }
 
 .description {
-  font-size: 0.875rem;
+  font-size: 1.8rem;
   line-height: 1.85;
   color: #222;
 }
@@ -131,16 +131,17 @@ h1 {
   align-items: center;
   gap: 18px;
   margin-top: 40px;
+  z-index: 1;
 }
 
 .dash {
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 2rem;
 }
 
 .count {
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 2rem;
   letter-spacing: 0.04em;
 }
 
@@ -232,4 +233,21 @@ h1 {
 
 .dot:hover:not(.active) {
   background: rgba(17, 17, 17, 0.25);
+}
+
+#pikachu-img{
+    height: 1000px;
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+}
+
+.title{
+    font-size: 12rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    color: #111;
+    
 }
