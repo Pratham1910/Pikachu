@@ -1,318 +1,235 @@
-:root {
-  color-scheme: light;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #f8e6a8;
-  color: #111;
-}
-
-* {
+*, *::before, *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html, body {
-  margin: 0;
-  min-height: 100%;
+  height: 100%;
 }
 
 body {
-  background: linear-gradient(90deg, #f6cc2b 50%, #fbf2d0 50%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #FCC21B 50%, #F0E4C4 50%);
+  height: 100vh;
+  overflow: hidden;
+  color: #111;
 }
 
-.page-shell {
-  min-height: 100vh;
-  padding: 32px;
+.page {
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  padding: 28px 40px;
 }
 
-.top-bar {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto 24px;
+/* ── Header ─────────────────────────────────────────── */
+
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0;
+  margin-bottom: 0;
 }
 
-.brand-logo {
-  font-size: 1.1rem;
-  letter-spacing: 0.25em;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 2.5px solid #1A237E;
+  border-radius: 8px;
+  padding: 5px 12px 5px 8px;
+}
+
+.pokeball-icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-weight: 900;
+  font-size: 1.05rem;
+  color: #FFE21F;
+  -webkit-text-stroke: 1.5px #1A237E;
+  paint-order: stroke fill;
+  letter-spacing: 0.01em;
+  font-style: italic;
   text-transform: uppercase;
-  font-weight: 700;
-  color: #111;
+  line-height: 1;
+  user-select: none;
 }
 
-.menu-btn {
-  width: 48px;
-  height: 48px;
+.hamburger {
+  background: none;
   border: none;
-  background: rgba(17, 17, 17, 0.1);
-  border-radius: 16px;
-  display: grid;
-  place-items: center;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px;
 }
 
-.menu-btn span {
+.hamburger span {
   display: block;
-  width: 20px;
-  height: 2px;
+  width: 30px;
+  height: 2.5px;
   background: #111;
-  border-radius: 999px;
+  border-radius: 2px;
 }
 
-.menu-btn span + span {
-  margin-top: 6px;
-}
+/* ── Hero ────────────────────────────────────────────── */
 
 .hero {
   flex: 1;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  min-height: calc(100vh - 120px);
-  gap: 40px;
+  display: flex;
   align-items: center;
-  padding: 40px 0;
+  min-height: 0;
 }
 
-.hero-copy {
-  max-width: 540px;
+/* Left – yellow half */
+
+.hero-left {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 32px;
+  padding-bottom: 48px;
+  min-height: 0;
 }
 
 .eyebrow {
-  margin: 0 0 24px;
-  font-size: 0.85rem;
+  font-size: 0.72rem;
+  font-weight: 400;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: #191919;
+  color: #1a1a1a;
+  margin-bottom: 18px;
 }
 
 h1 {
-  margin: 0;
-  font-size: clamp(4rem, 7vw, 6.5rem);
-  line-height: 0.9;
+  font-size: clamp(5rem, 8.5vw, 7rem);
+  font-weight: 900;
   letter-spacing: -0.04em;
+  line-height: 0.9;
   color: #111;
+  margin-bottom: 26px;
 }
 
-.hero-text {
-  margin: 28px 0 0;
-  font-size: 1rem;
-  line-height: 1.9;
-  max-width: 520px;
-  color: #262626;
+.description {
+  font-size: 0.875rem;
+  line-height: 1.85;
+  color: #222;
 }
 
-.hero-footer {
-  margin-top: 42px;
+.pagination {
   display: flex;
   align-items: center;
   gap: 18px;
+  margin-top: 40px;
 }
 
-.divider {
-  display: block;
-  width: 72px;
-  height: 2px;
-  background: #111;
-}
-
-.page-count {
+.dash {
   font-weight: 700;
-  letter-spacing: 0.08em;
+  font-size: 1rem;
 }
 
-.hero-visual {
+.count {
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+}
+
+/* Pokéball watermark */
+
+.pokeball-watermark {
+  position: absolute;
+  bottom: -100px;
+  left: -90px;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  border: 30px solid rgba(0, 0, 0, 0.07);
+  pointer-events: none;
+}
+
+.pokeball-watermark::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  right: -30px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.07);
+  transform: translateY(-50%);
+}
+
+.pokeball-watermark::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 30px solid rgba(0, 0, 0, 0.07);
+  background: #FCC21B;
+  transform: translate(-50%, -50%);
+}
+
+/* Right – cream half */
+
+.hero-right {
+  flex: 1;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 0;
+}
+
+.pikachu-img {
+  max-height: 88vh;
+  width: auto;
+  object-fit: contain;
+  margin-left: -12%;
   position: relative;
-}
-
-.pikachu {
-  position: relative;
-  width: min(520px, 100%);
-  aspect-ratio: 1 / 1.08;
-}
-
-.pikachu::before {
-  content: "";
-  position: absolute;
-  inset: 12% auto auto 10%;
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.25);
-  filter: blur(24px);
-}
-
-.ear {
-  position: absolute;
-  width: 88px;
-  height: 168px;
-  background: #f7d940;
-  border-radius: 50% 50% 42% 42%;
-  top: 0;
-  z-index: 2;
-  border: 4px solid #000;
-}
-
-.ear-left {
-  left: 0;
-  transform: rotate(-12deg);
-}
-
-.ear-right {
-  right: 0;
-  transform: rotate(12deg);
-}
-
-.ear::after {
-  content: "";
-  position: absolute;
-  bottom: 22px;
-  left: 0;
-  width: 100%;
-  height: 42px;
-  background: linear-gradient(180deg, transparent 0%, #000 100%);
-  border-radius: 0 0 28px 28px;
-}
-
-.head {
-  position: absolute;
-  left: 50%;
-  top: 18%;
-  width: 320px;
-  height: 240px;
-  background: #f7d940;
-  border: 4px solid #000;
-  border-radius: 50% 50% 52% 52%;
-  transform: translateX(-50%);
   z-index: 1;
 }
 
-.eye {
+/* Navigation dots */
+
+.dots-nav {
   position: absolute;
-  top: 70px;
-  width: 32px;
-  height: 42px;
-  background: #111;
-  border-radius: 50%;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  z-index: 2;
 }
 
-.eye-left {
-  left: 72px;
-}
-
-.eye-right {
-  right: 72px;
-}
-
-.eye::after {
-  content: "";
-  position: absolute;
+.dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #fff;
-  top: 8px;
-  left: 8px;
+  border: 2px solid #111;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s;
 }
 
-.nose {
-  position: absolute;
-  left: 50%;
-  top: 134px;
-  width: 16px;
-  height: 8px;
-  background: #401f02;
-  border-radius: 40%;
-  transform: translateX(-50%);
+.dot.active {
+  background: #111;
 }
 
-.mouth {
-  position: absolute;
-  left: 50%;
-  top: 150px;
-  width: 88px;
-  height: 52px;
-  border-bottom: 6px solid #401f02;
-  border-radius: 0 0 64px 64px;
-  transform: translateX(-50%);
-}
-
-.cheek {
-  position: absolute;
-  top: 138px;
-  width: 64px;
-  height: 64px;
-  background: #f0384f;
-  border-radius: 50%;
-  border: 4px solid #c41a34;
-}
-
-.cheek-left {
-  left: 26px;
-}
-
-.cheek-right {
-  right: 26px;
-}
-
-.body {
-  position: absolute;
-  left: 50%;
-  top: 178px;
-  width: 360px;
-  height: 260px;
-  background: #f7d940;
-  border: 4px solid #000;
-  border-radius: 50% 50% 48% 48%;
-  transform: translateX(-50%);
-}
-
-.tail {
-  position: absolute;
-  right: -28px;
-  top: 120px;
-  width: 140px;
-  height: 220px;
-  background: linear-gradient(180deg, #f7d940 65%, #000 35%);
-  clip-path: polygon(0 0, 100% 7%, 70% 42%, 100% 56%, 45% 100%, 0 78%);
-  border: 4px solid #000;
-  border-left: none;
-  border-top: none;
-  border-bottom: none;
-}
-
-@media (max-width: 960px) {
-  .hero {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-
-  .hero-visual {
-    margin-top: 32px;
-  }
-}
-
-@media (max-width: 680px) {
-  .page-shell {
-    padding: 20px;
-  }
-
-  .hero-copy {
-    max-width: 100%;
-  }
-
-  .top-bar {
-    margin-bottom: 18px;
-  }
-
-  h1 {
-    font-size: 4.5rem;
-  }
+.dot:hover:not(.active) {
+  background: rgba(17, 17, 17, 0.25);
 }
